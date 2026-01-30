@@ -1,11 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
-import { Shield, Menu, X } from "lucide-react";
+import { Shield, Menu, X, LayoutDashboard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Header = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user } = useAuth();
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -49,11 +51,20 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
+          {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="outline" size="sm" asChild>
-              <Link to="/login">Sign In</Link>
-            </Button>
+            {user ? (
+              <Button variant="outline" size="sm" asChild className="gap-2">
+                <Link to="/dashboard">
+                  <LayoutDashboard className="h-4 w-4" />
+                  Dashboard
+                </Link>
+              </Button>
+            ) : (
+              <Button variant="outline" size="sm" asChild>
+                <Link to="/login">Sign In</Link>
+              </Button>
+            )}
             <Button size="sm" className="glow-primary" asChild>
               <Link to="/report">Report Scam</Link>
             </Button>
@@ -87,11 +98,24 @@ const Header = () => {
                 </Link>
               ))}
               <div className="flex flex-col gap-2 mt-4 px-4">
-                <Button variant="outline" asChild>
-                  <Link to="/login">Sign In</Link>
-                </Button>
+                {user ? (
+                  <Button variant="outline" asChild className="gap-2">
+                    <Link to="/dashboard" onClick={() => setMobileMenuOpen(false)}>
+                      <LayoutDashboard className="h-4 w-4" />
+                      Dashboard
+                    </Link>
+                  </Button>
+                ) : (
+                  <Button variant="outline" asChild>
+                    <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
+                      Sign In
+                    </Link>
+                  </Button>
+                )}
                 <Button className="glow-primary" asChild>
-                  <Link to="/report">Report Scam</Link>
+                  <Link to="/report" onClick={() => setMobileMenuOpen(false)}>
+                    Report Scam
+                  </Link>
                 </Button>
               </div>
             </nav>
