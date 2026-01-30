@@ -14,7 +14,184 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      case_documents: {
+        Row: {
+          case_id: string
+          file_name: string
+          file_type: string | null
+          file_url: string
+          id: string
+          uploaded_at: string
+          user_id: string
+        }
+        Insert: {
+          case_id: string
+          file_name: string
+          file_type?: string | null
+          file_url: string
+          id?: string
+          uploaded_at?: string
+          user_id: string
+        }
+        Update: {
+          case_id?: string
+          file_name?: string
+          file_type?: string | null
+          file_url?: string
+          id?: string
+          uploaded_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "case_documents_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "recovery_cases"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      recovery_cases: {
+        Row: {
+          amount_lost: number
+          amount_recovered: number
+          case_number: string
+          chain: string
+          created_at: string
+          description: string | null
+          id: string
+          recovery_status: Database["public"]["Enums"]["recovery_status"]
+          scam_type: string
+          scammer_address: string
+          status_notes: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount_lost?: number
+          amount_recovered?: number
+          case_number: string
+          chain: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          recovery_status?: Database["public"]["Enums"]["recovery_status"]
+          scam_type: string
+          scammer_address: string
+          status_notes?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount_lost?: number
+          amount_recovered?: number
+          case_number?: string
+          chain?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          recovery_status?: Database["public"]["Enums"]["recovery_status"]
+          scam_type?: string
+          scammer_address?: string
+          status_notes?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      withdrawal_requests: {
+        Row: {
+          account_name: string | null
+          account_number: string | null
+          admin_notes: string | null
+          amount: number
+          bank_name: string | null
+          case_id: string
+          created_at: string
+          id: string
+          processed_at: string | null
+          routing_number: string | null
+          status: string
+          swift_code: string | null
+          user_id: string
+          wallet_address: string | null
+          withdrawal_method: Database["public"]["Enums"]["withdrawal_method"]
+        }
+        Insert: {
+          account_name?: string | null
+          account_number?: string | null
+          admin_notes?: string | null
+          amount: number
+          bank_name?: string | null
+          case_id: string
+          created_at?: string
+          id?: string
+          processed_at?: string | null
+          routing_number?: string | null
+          status?: string
+          swift_code?: string | null
+          user_id: string
+          wallet_address?: string | null
+          withdrawal_method: Database["public"]["Enums"]["withdrawal_method"]
+        }
+        Update: {
+          account_name?: string | null
+          account_number?: string | null
+          admin_notes?: string | null
+          amount?: number
+          bank_name?: string | null
+          case_id?: string
+          created_at?: string
+          id?: string
+          processed_at?: string | null
+          routing_number?: string | null
+          status?: string
+          swift_code?: string | null
+          user_id?: string
+          wallet_address?: string | null
+          withdrawal_method?: Database["public"]["Enums"]["withdrawal_method"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "withdrawal_requests_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "recovery_cases"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +200,14 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      recovery_status:
+        | "investigation"
+        | "tracing"
+        | "recovery"
+        | "verification"
+        | "ready_for_withdrawal"
+        | "withdrawn"
+      withdrawal_method: "crypto" | "bank"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +334,16 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      recovery_status: [
+        "investigation",
+        "tracing",
+        "recovery",
+        "verification",
+        "ready_for_withdrawal",
+        "withdrawn",
+      ],
+      withdrawal_method: ["crypto", "bank"],
+    },
   },
 } as const
