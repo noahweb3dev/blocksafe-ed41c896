@@ -7,6 +7,7 @@ import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import SearchPage from "./pages/SearchPage";
 import ReportPage from "./pages/ReportPage";
+import ReportDetailPage from "./pages/ReportDetailPage";
 import AboutPage from "./pages/AboutPage";
 import FAQPage from "./pages/FAQPage";
 import PrivacyPage from "./pages/PrivacyPage";
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/search" element={<SearchPage />} />
             <Route path="/report" element={<ReportPage />} />
+            <Route path="/report/:id" element={<ReportDetailPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
