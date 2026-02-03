@@ -76,12 +76,13 @@ const ProfileSection = () => {
     const supabase = createClient();
 
     try {
+      type ProfileUpdate = Database["public"]["Tables"]["profiles"]["Update"];
       const { error } = await supabase
         .from("profiles")
         .update({
           full_name: fullName,
           phone: phone,
-        })
+        } as ProfileUpdate)
         .eq("user_id", user.id);
 
       if (error) throw error;
