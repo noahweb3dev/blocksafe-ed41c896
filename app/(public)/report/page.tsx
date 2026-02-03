@@ -58,14 +58,52 @@ export default function ReportPage() {
 
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    toast.success("Report submitted successfully!", {
-      description: "Thank you for helping protect the Web3 community.",
-    });
-    
-    router.push("/search");
+    try {
+      const response = await fetch("/api/report", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          address: formData.address,
+          chain: formData.chain,
+          scamType: formData.scamType,
+          description: formData.description,
+          evidence: formData.evidence,
+          contactEmail: formData.contactEmail,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit report");
+      }
+
+      toast.success("Report submitted successfully!", {
+        description: "Thank you for helping protect the Web3 community. We'll review your report shortly.",
+      });
+      
+      // Reset form
+      setFormData({
+        address: "",
+        chain: [],
+        scamType: "",
+        description: "",
+        evidence: "",
+        contactEmail: "",
+        agreeToTerms: false,
+      });
+      
+      router.push("/search");
+    } catch (error) {
+      console.error("Error submitting report:", error);
+      toast.error("Failed to submit report", {
+        description: error instanceof Error ? error.message : "Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

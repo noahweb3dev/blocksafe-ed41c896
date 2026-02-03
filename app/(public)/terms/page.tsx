@@ -1,6 +1,26 @@
+import type { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { FileText, Scale, Shield, AlertTriangle, Users, Globe, Gavel, Ban, CreditCard, MessageSquare, RefreshCw, Lock, Mail } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description: "Read Blocksafespace's Terms of Service to understand the legal agreement governing your access to and use of our platform and services.",
+  keywords: ["terms of service", "user agreement", "terms and conditions", "blocksafespace terms", "platform terms"],
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "Terms of Service - Blocksafespace",
+    description: "Read Blocksafespace's Terms of Service to understand the legal agreement governing your access to and use of our platform.",
+    url: "/terms",
+  },
+  twitter: {
+    title: "Terms of Service - Blocksafespace",
+    description: "Read Blocksafespace's Terms of Service to understand the legal agreement governing your access to and use of our platform.",
+  },
+};
 
 export default function TermsPage() {
   const lastUpdated = "January 15, 2026";

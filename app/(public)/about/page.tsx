@@ -1,5 +1,21 @@
+import type { Metadata } from "next";
 import { Shield, Users, Target, Globe } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description: "Learn about Blocksafespace's mission to build a safer Web3 ecosystem by empowering the community to identify and expose blockchain scams. Community-driven, accuracy-first, open access.",
+  keywords: ["about blocksafespace", "Web3 security mission", "blockchain scam prevention", "crypto community protection", "Web3 safety"],
+  openGraph: {
+    title: "About Blocksafespace - Building a Safer Web3 Ecosystem",
+    description: "Learn about Blocksafespace's mission to build a safer Web3 ecosystem by empowering the community to identify and expose blockchain scams.",
+    url: "/about",
+  },
+  twitter: {
+    title: "About Blocksafespace - Building a Safer Web3 Ecosystem",
+    description: "Learn about Blocksafespace's mission to build a safer Web3 ecosystem by empowering the community to identify and expose blockchain scams.",
+  },
+};
 
 export default function AboutPage() {
   return (

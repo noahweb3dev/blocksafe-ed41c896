@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Shield, Search, FileWarning, Users, ArrowRight, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -5,6 +6,21 @@ import { Card, CardContent } from "@/components/ui/card";
 import SearchBar from "@/components/SearchBar";
 import ReportCard from "@/components/ReportCard";
 import { mockReports, stats } from "@/components/mockData";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description: "Search for malicious wallet addresses, report scams, and protect yourself from crypto fraud across all major blockchains. Join the community fighting Web3 scams.",
+  keywords: ["blockchain scams", "crypto fraud", "wallet address checker", "scam database", "Web3 security", "cryptocurrency safety", "report scam"],
+  openGraph: {
+    title: "Blocksafespace - Report & Expose Blockchain Scams",
+    description: "Search for malicious wallet addresses, report scams, and protect yourself from crypto fraud across all major blockchains.",
+    url: "/",
+  },
+  twitter: {
+    title: "Blocksafespace - Report & Expose Blockchain Scams",
+    description: "Search for malicious wallet addresses, report scams, and protect yourself from crypto fraud across all major blockchains.",
+  },
+};
 
 export default function HomePage() {
   const recentReports = mockReports.slice(0, 4);

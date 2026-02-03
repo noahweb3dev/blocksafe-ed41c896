@@ -1,6 +1,26 @@
+import type { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Shield, Lock, Eye, Database, Globe, Users, FileText, AlertCircle, Settings, Mail } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "Read Blocksafespace's Privacy Policy to understand how we collect, use, disclose, and safeguard your information when you use our platform and services.",
+  keywords: ["privacy policy", "data protection", "user privacy", "blocksafespace privacy", "crypto platform privacy"],
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "Privacy Policy - Blocksafespace",
+    description: "Read Blocksafespace's Privacy Policy to understand how we collect, use, disclose, and safeguard your information.",
+    url: "/privacy",
+  },
+  twitter: {
+    title: "Privacy Policy - Blocksafespace",
+    description: "Read Blocksafespace's Privacy Policy to understand how we collect, use, disclose, and safeguard your information.",
+  },
+};
 
 export default function PrivacyPage() {
   const lastUpdated = "January 15, 2026";

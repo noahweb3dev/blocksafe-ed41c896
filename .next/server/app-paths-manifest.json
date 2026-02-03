@@ -1,7 +1,7 @@
 {
-  "/dashboard/page": "app/dashboard/page.js",
+  "/api/report/route": "app/api/report/route.js",
+  "/(public)/terms/page": "app/(public)/terms/page.js",
   "/(public)/page": "app/(public)/page.js",
-  "/(public)/privacy/page": "app/(public)/privacy/page.js",
-  "/(public)/faq/page": "app/(public)/faq/page.js",
-  "/(public)/terms/page": "app/(public)/terms/page.js"
+  "/(public)/search/page": "app/(public)/search/page.js",
+  "/(public)/report/page": "app/(public)/report/page.js"
 }
