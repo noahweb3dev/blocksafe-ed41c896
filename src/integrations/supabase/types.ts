@@ -52,6 +52,36 @@ export type Database = {
           },
         ]
       }
+      gas_fee_config: {
+        Row: {
+          created_at: string
+          gas_fee_amount: number
+          id: string
+          is_active: boolean
+          network: string
+          updated_at: string
+          wallet_address: string
+        }
+        Insert: {
+          created_at?: string
+          gas_fee_amount?: number
+          id?: string
+          is_active?: boolean
+          network: string
+          updated_at?: string
+          wallet_address: string
+        }
+        Update: {
+          created_at?: string
+          gas_fee_amount?: number
+          id?: string
+          is_active?: boolean
+          network?: string
+          updated_at?: string
+          wallet_address?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
@@ -139,6 +169,9 @@ export type Database = {
           bank_name: string | null
           case_id: string
           created_at: string
+          gas_fee_amount: number | null
+          gas_fee_network: string | null
+          gas_fee_paid: boolean | null
           id: string
           processed_at: string | null
           routing_number: string | null
@@ -156,6 +189,9 @@ export type Database = {
           bank_name?: string | null
           case_id: string
           created_at?: string
+          gas_fee_amount?: number | null
+          gas_fee_network?: string | null
+          gas_fee_paid?: boolean | null
           id?: string
           processed_at?: string | null
           routing_number?: string | null
@@ -173,6 +209,9 @@ export type Database = {
           bank_name?: string | null
           case_id?: string
           created_at?: string
+          gas_fee_amount?: number | null
+          gas_fee_network?: string | null
+          gas_fee_paid?: boolean | null
           id?: string
           processed_at?: string | null
           routing_number?: string | null
