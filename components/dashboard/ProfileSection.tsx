@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { User, Mail, Phone, Save } from "lucide-react";
+import { User as UserIcon, Mail, Phone, Save } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -111,7 +111,7 @@ const ProfileSection = () => {
     <Card className="border-border/50 bg-card/80 backdrop-blur-sm max-w-2xl">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <User className="h-5 w-5 text-primary" />
+          <UserIcon className="h-5 w-5 text-primary" />
           Profile Settings
         </CardTitle>
         <CardDescription>
@@ -139,7 +139,7 @@ const ProfileSection = () => {
 
           <div className="space-y-2">
             <Label htmlFor="fullName" className="flex items-center gap-2">
-              <User className="h-4 w-4 text-muted-foreground" />
+              <UserIcon className="h-4 w-4 text-muted-foreground" />
               Full Name
             </Label>
             <Input
