@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Shield, Github, Twitter } from "lucide-react";
+import { Shield, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -83,20 +83,12 @@ const Footer = () => {
           </p>
           <div className="flex items-center gap-4">
             <a
-              href="https://twitter.com"
+              href="https://x.com/blocksafespace?s=21"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               <Twitter className="h-5 w-5" />
-            </a>
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
-              <Github className="h-5 w-5" />
             </a>
           </div>
         </div>
