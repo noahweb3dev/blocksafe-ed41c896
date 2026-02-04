@@ -242,24 +242,26 @@ export default function DashboardPage() {
 
       {/* Main Content Tabs */}
       <Tabs defaultValue="cases" className="space-y-6">
-        <TabsList className="bg-secondary/50 p-1">
-          <TabsTrigger value="cases" className="gap-2">
-            <FileText className="h-4 w-4" />
-            My Cases
-          </TabsTrigger>
-          <TabsTrigger value="documents" className="gap-2">
-            <Search className="h-4 w-4" />
-            Documents
-          </TabsTrigger>
-          <TabsTrigger value="withdraw" className="gap-2">
-            <Wallet className="h-4 w-4" />
-            Withdraw
-          </TabsTrigger>
-          <TabsTrigger value="profile" className="gap-2">
-            <Shield className="h-4 w-4" />
-            Profile
-          </TabsTrigger>
-        </TabsList>
+        <div className="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0">
+          <TabsList className="bg-secondary/50 p-1 w-full md:w-auto min-w-max">
+            <TabsTrigger value="cases" className="gap-1 md:gap-2 text-xs md:text-sm px-2 md:px-3">
+              <FileText className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+              <span className="whitespace-nowrap">My Cases</span>
+            </TabsTrigger>
+            <TabsTrigger value="documents" className="gap-1 md:gap-2 text-xs md:text-sm px-2 md:px-3">
+              <Search className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+              <span className="whitespace-nowrap">Documents</span>
+            </TabsTrigger>
+            <TabsTrigger value="withdraw" className="gap-1 md:gap-2 text-xs md:text-sm px-2 md:px-3">
+              <Wallet className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+              <span className="whitespace-nowrap">Withdraw</span>
+            </TabsTrigger>
+            <TabsTrigger value="profile" className="gap-1 md:gap-2 text-xs md:text-sm px-2 md:px-3">
+              <Shield className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+              <span className="whitespace-nowrap">Profile</span>
+            </TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="cases">
           <CasesList onUpdate={() => user && fetchDashboardStats(user.id)} />
